@@ -19,7 +19,8 @@ namespace random_passcode.Controllers
             string code = HttpContext.Session.GetString("RndCode");
             int? count = HttpContext.Session.GetInt32("count");
             count++;
-            HttpContext.Session.SetInt32("count", count);
+            int cnt = count ?? default(int);
+            HttpContext.Session.SetInt32("count", cnt);
             ViewBag.count = count;
             ViewBag.passcode = code;
             return View();
